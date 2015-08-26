@@ -15,29 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *       __  _____________   _______   __________  ____  ______
- *      /  |/  / ____/ __ \ /  _/   | / ____/ __ \/ __ \/ ____/
- *     / /|_/ / __/ / / / / / // /| |/ /   / / / / /_/ / __/
- *    / /  / / /___/ /_/ /_/ // ___ / /___/ /_/ / _, _/ /___
- *   /_/  /_/_____/_____//___/_/  |_\____/\____/_/ |_/_____/
  *
- * MediaCore's local plugin
+ * Binumi's local plugin
  *
  * @package    local
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
 
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
-$plugin                     = new stdClass();
-$plugin->component          = 'local_mediacore';
-$plugin->version            = 2015060800;
-$plugin->requires           = 2012062500;
-$plugin->release            = '3.0.8';
-$plugin->maturity           = MATURITY_STABLE;
-$plugin->dependencies       = array(
-    'mod_lti' => 2011112900,
-);
+define('LOCAL_BINUMI_PLUGIN_NAME', 'local_binumi');
+define('LOCAL_BINUMI_DEFAULT_SCHEME', 'https');
+define('LOCAL_BINUMI_DEFAULT_USE_LTI_AUTH', true);
+define('LOCAL_BINUMI_DEFAULT_USE_TRUSTED_EMBEDS', false);
+
+$path = dirname(__FILE__) . '/library';
+set_include_path(get_include_path() . PATH_SEPARATOR . $path);

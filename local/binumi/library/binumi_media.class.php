@@ -15,17 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *       __  _____________   _______   __________  ____  ______
- *      /  |/  / ____/ __ \ /  _/   | / ____/ __ \/ __ \/ ____/
- *     / /|_/ / __/ / / / / / // /| |/ /   / / / / /_/ / __/
- *    / /  / / /___/ /_/ /_/ // ___ / /___/ /_/ / _, _/ /___
- *   /_/  /_/_____/_____//___/_/  |_\____/\____/_/ |_/_____/
  *
- * MediaCore's local plugin
+ * Binumi's local plugin
  *
  * @package    local
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -34,25 +29,25 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
 
 global $CFG;
 require_once $CFG->dirroot . '/lib/filelib.php';
-require_once 'mediacore_config.class.php';
-require_once 'mediacore_client.class.php';
-require_once 'mediacore_media_rowset.class.php';
+require_once 'binumi_config.class.php';
+require_once 'binumi_client.class.php';
+require_once 'binumi_media_rowset.class.php';
 
 
 /**
  * A class that encapsulates fetching media from the API
  */
-class mediacore_media
+class binumi_media
 {
-    private $_mcore_client;
+    private $_binumi_client;
 
     /**
      * Constructor
      *
-     * @param mediacore_client $client
+     * @param binumi_client $client
      */
     public function __construct($client) {
-        $this->_mcore_client = $client;
+        $this->_binumi_client = $client;
     }
 
     /**
@@ -63,7 +58,7 @@ class mediacore_media
      * @param int $page
      * @param int $per_page
      * @param int|null $courseid
-     * @return mediacore_media_rowset
+     * @return binumi_media_rowset
      */
     public function get_media($search='', $page=1, $per_page=30, $courseid=null) {
 
@@ -82,20 +77,20 @@ class mediacore_media
             $params['sort'] = 'relevance';
         }
 
-        $url = $this->_mcore_client->get_url('api2', 'media');
+        $url = $this->_binumi_client->get_url('api2', 'media');
 
-        if ($this->_mcore_client->has_lti_config() && !is_null($courseid)) {
+        if ($this->_binumi_client->has_lti_config() && !is_null($courseid)) {
             $headers = array();
-            $authtkt_str = $this->_mcore_client->get_auth_cookie($courseid);
+            $authtkt_str = $this->_binumi_client->get_auth_cookie($courseid);
             if (empty($authtkt_str)) {
                 // TODO: report an error?
             } else {
                 $headers = array('Cookie: ' . $authtkt_str);
-                $url .= '?' . $this->_mcore_client->get_query($params);
-                $result = $this->_mcore_client->get($url, null, $headers);
+                $url .= '?' . $this->_binumi_client->get_query($params);
+                $result = $this->_binumi_client->get($url, null, $headers);
             }
         } else {
-            $result = $this->_mcore_client->get($url);
+            $result = $this->_binumi_client->get($url);
         }
 
         $rowset = null;
@@ -103,8 +98,8 @@ class mediacore_media
             // TODO: report an error?
         } else {
             $result = json_decode($result);
-            $rowset = new mediacore_media_rowset(
-                $this->_mcore_client, $result->items
+            $rowset = new binumi_media_rowset(
+                $this->_binumi_client, $result->items
             );
         }
         return $rowset;
@@ -131,17 +126,17 @@ class mediacore_media
             $params['search'] = urlencode($search);
         }
 
-        $url = $this->_mcore_client->get_url('api2', 'media', 'count');
+        $url = $this->_binumi_client->get_url('api2', 'media', 'count');
 
-        if ($this->_mcore_client->has_lti_config() && !is_null($courseid)) {
+        if ($this->_binumi_client->has_lti_config() && !is_null($courseid)) {
             $headers = array();
-            $authtkt_str = $this->_mcore_client->get_auth_cookie($courseid);
+            $authtkt_str = $this->_binumi_client->get_auth_cookie($courseid);
             if (empty($authtkt_str)) {
                 // TODO: report an error?
             } else {
                 $headers = array('Cookie: ' . $authtkt_str);
-                $url .= '?' . $this->_mcore_client->get_query($params);
-                $result = $this->_mcore_client->get($url, null, $headers);
+                $url .= '?' . $this->_binumi_client->get_query($params);
+                $result = $this->_binumi_client->get($url, null, $headers);
             }
         } else {
             $result = $this->_mcore_client->get($url);
