@@ -15,12 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
  *
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
+ * @subpackage mediacore
+ * @copyright  2012 MediaCore Technologies
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -28,10 +34,10 @@
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
 $plugin                     = new stdClass();
-$plugin->component          = 'local_binumi';
-$plugin->version            = 2015090100;
+$plugin->component          = 'local_mediacore';
+$plugin->version            = 2015060800;
 $plugin->requires           = 2012062500;
-$plugin->release            = '1.0.0';
+$plugin->release            = '3.0.8';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
     'mod_lti' => 2011112900,

@@ -15,11 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
+ *
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
+ * @subpackage mediacore
+ * @copyright  2012 MediaCore Technologies
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -31,10 +38,10 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
  * A class that encapsulated the MediaCore Moodle Config
  * Config values in config_plugins table as local_mediacore
  */
-class binumi_config
+class mediacore_config
 {
     private $_consumer_key;
-    private $_host = 'www.binumi.com';
+    private $_host = 'demo.mediacore.tv';
     private $_shared_secret;
     private $_version;
     private $_webroot;
@@ -58,7 +65,7 @@ class binumi_config
         $this->_webroot = $CFG->wwwroot;
 
         $records = $DB->get_records('config_plugins',
-            array('plugin' => LOCAL_BINUMI_PLUGIN_NAME));
+            array('plugin' => LOCAL_MEDIACORE_PLUGIN_NAME));
 
         if (!empty($records)) {
             foreach ($records as $r) {
@@ -97,7 +104,7 @@ class binumi_config
     }
 
     /**
-     * Get the binumi host (may contain a port num)
+     * Get the mediacore host (may contain a port num)
      * @return string
      */
     public function get_host() {
@@ -105,12 +112,12 @@ class binumi_config
     }
 
     /**
-     * Get the binumi host scheme
+     * Get the mediacore host scheme
      * @return string
      */
     public function get_scheme() {
         if (empty($this->_scheme)) {
-            return LOCAL_BINUMI_DEFAULT_SCHEME;
+            return LOCAL_MEDIACORE_DEFAULT_SCHEME;
         }
         return $this->_scheme;
     }
@@ -137,7 +144,7 @@ class binumi_config
      */
     public function get_use_trusted_embeds() {
         if (empty($this->_use_trusted_embeds)) {
-            return LOCAL_BINUMI_DEFAULT_USE_TRUSTED_EMBEDS;
+            return LOCAL_MEDIACORE_DEFAULT_USE_TRUSTED_EMBEDS;
         }
         return (boolean)$this->_use_trusted_embeds;
     }
@@ -155,7 +162,7 @@ class binumi_config
      * @return string
      */
     public function get_plugin_info() {
-        return 'binumi-moodle-chooser-' . $this->get_version();
+        return 'mediacore-moodle-chooser-' . $this->get_version();
     }
 
 }

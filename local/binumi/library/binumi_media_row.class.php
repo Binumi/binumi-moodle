@@ -15,11 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
+ *
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
+ * @subpackage mediacore
+ * @copyright  2012 MediaCore Technologies
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -28,15 +35,15 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
 
 global $CFG;
 require_once $CFG->dirroot . '/lib/filelib.php';
-require_once 'binumi_client.class.php';
+require_once 'mediacore_client.class.php';
 
 
 /**
  * A class that encapsulated a media row object
  */
-class binumi_media_row
+class mediacore_media_row
 {
-    private $_binumi_client;
+    private $_mcore_client;
     private $_data;
     private $_thumb_height = 120;
     private $_thumb_width = 90;
@@ -44,7 +51,7 @@ class binumi_media_row
     /**
      * Constructor
      *
-     * @param binumi_client $client
+     * @param mediacore_client $client
      * @param object $media
      */
     public function __construct($client, $data) {
@@ -153,7 +160,7 @@ class binumi_media_row
      * @return string
      */
     public function get_source() {
-        return $this->_binumi_client->get_siteurl() .
+        return $this->_mcore_client->get_siteurl() .
             $this->get_view_url() . '#' . $this->get_title();
     }
 
@@ -165,7 +172,7 @@ class binumi_media_row
     public function get_thumbnail_url() {
         $thumb_url = $this->_data->joins->thumbs->sizes->s_4x3;
         if (strpos($thumb_url, 'http') === false) {
-            return $this->_binumi_client->get_siteurl() .
+            return $this->_mcore_client->get_siteurl() .
                 $thumb_url;
         }
         return $thumb_url;

@@ -15,21 +15,27 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package    atto
- * @usbpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
+ *
+ * @package    atto_mediacore
+ * @copyright  2014 MediaCore <info@mediacore.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 $plugin                     = new StdClass();
-$plugin->component          = 'atto_binumi';
-$plugin->version            = 2015032500;
+$plugin->component          = 'atto_mediacore';
+$plugin->version            = 2015051200;
 $plugin->requires           = 2014041100; //Moodle 2.7
-$plugin->release            = '1.2';
+$plugin->release            = '1.3';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
-    'local_binumi' => 2015032500,
-    //'filter_binumi' => 2015022100,
+    'local_mediacore' => 2015032500,
+    'filter_mediacore' => 2015022100,
 );

@@ -15,22 +15,28 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
  *
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
+ * @subpackage mediacore
+ * @copyright  2012 MediaCore Technologies
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
 
-function xmldb_local_binumi_upgrade($oldversion) {
+function xmldb_local_mediacore_upgrade($oldversion) {
     global $DB;
 
     // Get the old 'url' setting, if there is one...
     $old_record = $DB->get_record('config_plugins',
-            array('plugin'=>'local_binumi', 'name'=>'url'));
+            array('plugin'=>'local_mediacore', 'name'=>'url'));
 
     // Replace the old 'url' setting with a new 'host' setting
     // that includes only the hostname and port.
@@ -42,13 +48,13 @@ function xmldb_local_binumi_upgrade($oldversion) {
             $host .= ':' . $port;
         }
         $new_record = new stdClass();
-        $new_record->plugin = 'local_binumi';
+        $new_record->plugin = 'local_mediacore';
         $new_record->name = 'host';
         $new_record->value = $host;
 
         $DB->insert_record('config_plugins', $new_record, false);
         $DB->delete_records('config_plugins',
-                array('plugin' => 'local_binumi', 'name' => 'url'));
+                array('plugin' => 'local_mediacore', 'name' => 'url'));
     }
     return true;
 }

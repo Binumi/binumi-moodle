@@ -15,12 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
  *
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage binumi
- * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
+ * @subpackage mediacore
+ * @copyright  2012 MediaCore Technologies
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -31,14 +37,14 @@ global $CFG;
 require_once $CFG->dirroot. '/mod/lti/locallib.php';
 require_once 'Zend/Uri/Http.php';
 require_once 'Zend/Exception.php';
-require_once 'binumi_config.class.php';
+require_once 'mediacore_config.class.php';
 
 
 /**
- * The Binumi Moodle Client
+ * The MediaCore Moodle Client
  * Encapsulated the client access endpoints and lti helpers
  */
-class binumi_client
+class mediacore_client
 {
     private $_chooser_js_path = '/api/chooser.js';
     private $_chooser_path = '/chooser';
@@ -49,7 +55,7 @@ class binumi_client
      * Constructor
      */
     public function __construct() {
-        $this->_config = new binumi_config();
+        $this->_config = new mediacore_config();
 
         // We have to use the fromString method because the 'host' we pass in
         // may actually contain a port (e.g. 'blah.com:8080' not just 'blah.com')
@@ -61,16 +67,16 @@ class binumi_client
     }
 
     /**
-     * The binumi_config object
+     * The mediacore_config object
      *
-     * @return binumi_config
+     * @return mediacore_config
      */
     public function get_config() {
         return $this->_config;
     }
 
     /**
-     * Get the binumi site url scheme
+     * Get the mediacore site url scheme
      *
      * @return string|boolean
      */
@@ -79,7 +85,7 @@ class binumi_client
     }
 
     /**
-     * Get the binumi site host
+     * Get the mediacore site host
      * w/o the port
      *
      * @return string
@@ -89,7 +95,7 @@ class binumi_client
     }
 
     /**
-     * Get the binumi site port
+     * Get the mediacore site port
      *
      * @return string|boolean
      */
@@ -98,7 +104,7 @@ class binumi_client
     }
 
     /**
-     * Get the binumi site url host and port
+     * Get the mediacore site url host and port
      *
      * @return string
      */
@@ -111,7 +117,7 @@ class binumi_client
     }
 
     /**
-     * Get the binumi site base url
+     * Get the mediacore site base url
      *
      * @return string
      */
@@ -138,8 +144,8 @@ class binumi_client
     /**
      * Urlencode the query params values
      *
-     * @param array $params
-     * @return string
+     * @param string $params
+     * @return array
      */
     public function get_query($params) {
         $encoded_params = '';
@@ -431,22 +437,25 @@ class binumi_client
      * @return array
      */
     public function get_texteditor_params() {
-        global $COURSE;
+        global $COURSE, $CFG;
 
         //default non-lti urls
         $chooser_js_url = $this->get_chooser_js_url();
         $chooser_url = $this->get_unsigned_chooser_url();
+        $launch_url = null;
 
         if ($this->has_lti_config() && isset($COURSE->id)) {
-            //NOTE: Sign the chooser js endpoint only so that the oauth values
-            //      are not regenerated.
-            $chooser_js_url = $this->get_signed_chooser_js_url($COURSE->id);
+            $chooser_js_url = $this->get_chooser_js_url($COURSE->id);
             // append the context_id to the chooser endpoint
             $chooser_url .= (strpos($chooser_url, '?') === false) ? '?' : '&';
             $chooser_url .= 'context_id=' . $COURSE->id;
+            $site_url = $this->get_siteurl();
+            $content_url = $CFG->wwwroot.'/local/mediacore/sign.php';
+            $launch_url = str_replace($site_url, $content_url, $chooser_url);
         }
         $params['mcore_chooser_js_url'] = $chooser_js_url;
         $params['mcore_chooser_url'] = $chooser_url;
+        $params['mcore_launch_url'] = $launch_url;
 
         return $params;
     }
@@ -470,13 +479,13 @@ class binumi_client
         if (!isset($filters)) {
             $filters = filter_get_active_in_context($context);
         }
-        if (array_key_exists('filter/binumi', $filters)) {
+        if (array_key_exists('filter/mediacore', $filters)) {
             $params = $params + $this->get_texteditor_params();
-            $params['plugins'] .= ',binumi';
+            $params['plugins'] .= ',mediacore';
             if (isset($params['theme_advanced_buttons3_add'])) {
-                $params['theme_advanced_buttons3_add'] .= ",|,binumi";
+                $params['theme_advanced_buttons3_add'] .= ",|,mediacore";
             } else {
-                $params['theme_advanced_buttons3_add'] = ",|,binumi";
+                $params['theme_advanced_buttons3_add'] = ",|,mediacore";
             }
         }
         return $params;
