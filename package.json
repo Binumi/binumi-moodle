@@ -1,0 +1,14 @@
+{
+  "name": "binumi-moodle",
+  "description": "Binumi Moodle Plugins",
+  "version": "v1.0.0",
+  "private": true,
+  "readme":"README.md",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Binumi/binumi-moodle.git"
+  },
+  "devDependencies": {
+    "shifter": "~0.5.*"
+  }
+}
