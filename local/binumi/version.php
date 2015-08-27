@@ -25,8 +25,8 @@
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -34,10 +34,10 @@
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
 $plugin                     = new stdClass();
-$plugin->component          = 'local_mediacore';
-$plugin->version            = 2015060800;
+$plugin->component          = 'local_binumi';
+$plugin->version            = 2015090100;
 $plugin->requires           = 2012062500;
-$plugin->release            = '3.0.8';
+$plugin->release            = '1.0.0';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
     'mod_lti' => 2011112900,

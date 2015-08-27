@@ -25,8 +25,8 @@
  * Binumi's local plugin
  *
  * @package    local
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -35,16 +35,16 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
 
 global $CFG;
 require_once $CFG->dirroot . '/lib/filelib.php';
-require_once 'mediacore_client.class.php';
-require_once 'mediacore_media_row.class.php';
+require_once 'binumi_client.class.php';
+require_once 'binumi_media_row.class.php';
 
 
 /**
  * An iteratable rowset class that will return a custom row object
  */
-class mediacore_media_rowset implements Iterator, Countable
+class binumi_media_rowset implements Iterator, Countable
 {
-    private $_mcore_client;
+    private $_binumi_client;
     private $_count;
     private $_position;
     private $_media;
@@ -52,7 +52,7 @@ class mediacore_media_rowset implements Iterator, Countable
 
     public function __construct($client, $media) {
         $this->_count = count($media);
-        $this->_mcore_client = $client;
+        $this->_binumi_client = $client;
         $this->_position = 0;
         $this->_media = $media;
         $this->_rows = array();
@@ -71,8 +71,8 @@ class mediacore_media_rowset implements Iterator, Countable
             return null;
         }
         if (empty($this->_rows[$this->_position])) {
-            $this->_rows[$this->_position] = new mediacore_media_row(
-                $this->_mcore_client, $this->_media[$this->_position]);
+            $this->_rows[$this->_position] = new binumi_media_row(
+                $this->_binumi_client, $this->_media[$this->_position]);
         }
         return $this->_rows[$this->_position];
     }
