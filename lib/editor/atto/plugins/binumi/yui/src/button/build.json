@@ -1,7 +1,7 @@
 {
-    "name": "moodle-atto_mediacore-button",
+    "name": "moodle-atto_binumi-button",
     "builds": {
-        "moodle-atto_mediacore-button": {
+        "moodle-atto_binumi-button": {
             "jsfiles": [
                 "button.js"
             ]

@@ -1,5 +1,5 @@
 {
-    "moodle-atto_mediacore-button": {
+    "moodle-atto_binumi-button": {
         "requires": [
             "moodle-editor_atto-plugin"
         ]

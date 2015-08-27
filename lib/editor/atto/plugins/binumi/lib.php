@@ -17,29 +17,30 @@
 /**
  * The MediaCore Chooser Atto editor button implementation
  *
- * @package    atto_mediacore
- * @copyright  2014 MediaCore <info@mediacore.com>
+ * @package    atto
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
 global $CFG;
-require_once $CFG->dirroot . '/local/mediacore/lib.php';
-require_once 'mediacore_client.class.php';
+require_once $CFG->dirroot . '/local/binumi/lib.php';
+require_once 'binumi_client.class.php';
 
 
 /**
  * Initialise this plugin
  * @param string $elementid
  */
-function atto_mediacore_strings_for_js() {
+function atto_binumi_strings_for_js() {
     global $PAGE;
 
     $PAGE->requires->strings_for_js(
         array(
             'noparamserror',
             'nochooserjserror',
-        ), 'atto_mediacore');
+        ), 'atto_binumi');
 }
 
 
@@ -47,18 +48,17 @@ function atto_mediacore_strings_for_js() {
  * Return the js params required for this module.
  * @return array of additional params to pass to javascript init function.
  */
-function atto_mediacore_params_for_js() {
+function atto_binumi_params_for_js() {
     global $COURSE;
 
     //NOTE: the params used for the tinymce editor plugin and
     //  the atto editor plugin are the same
-    $client = new mediacore_client();
+    $client = new binumi_client();
     $params = $client->get_texteditor_params();
 
     return array(
-        'chooser_js_url' => $params['mcore_chooser_js_url'],
-        'url' => $params['mcore_chooser_url'],
+        'chooser_js_url' => $params['binumi_chooser_js_url'],
+        'url' => $params['binumi_chooser_url'],
         'mode' => 'popup',
-        'launch_url' => $params['mcore_launch_url'],
     );
 }
