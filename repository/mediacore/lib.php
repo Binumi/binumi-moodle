@@ -15,13 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *       __  _____________   _______   __________  ____  ______
- *      /  |/  / ____/ __ \ /  _/   | / ____/ __ \/ __ \/ ____/
- *     / /|_/ / __/ / / / / / // /| |/ /   / / / / /_/ / __/
- *    / /  / / /___/ /_/ /_/ // ___ / /___/ /_/ / _, _/ /___
- *   /_/  /_/_____/_____//___/_/  |_\____/\____/_/ |_/_____/
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
  *
- * MediaCore repository search
+ * Binumi repository search
  *
  * @package    repository_mediacore
  * @category   repository
@@ -56,7 +57,7 @@ class repository_mediacore extends repository
     private $_mcore_media;
 
     /**
-     * MediaCore plugin constructor
+     * Binumi plugin constructor
      * @param int $repositoryid
      * @param object $context
      * @param array $options
@@ -140,7 +141,7 @@ class repository_mediacore extends repository
 
 
     /**
-     * MediaCore plugin doesn't support global search
+     * Binumi plugin doesn't support global search
      */
     public function global_search() {
         return false;

@@ -15,13 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *       __  _____________   _______   __________  ____  ______
- *      /  |/  / ____/ __ \ /  _/   | / ____/ __ \/ __ \/ ____/
- *     / /|_/ / __/ / / / / / // /| |/ /   / / / / /_/ / __/
- *    / /  / / /___/ /_/ /_/ // ___ / /___/ /_/ / _, _/ /___
- *   /_/  /_/_____/_____//___/_/  |_\____/\____/_/ |_/_____/
+ * __________.__                     .__
+ * \______   \__| ____  __ __  _____ |__|
+ *  |    |  _/  |/    \|  |  \/     \|  |
+ *  |    |   \  |   |  \  |  /  Y Y  \  |
+ *  |______  /__|___|  /____/|__|_|  /__|
+ *         \/        \/            \/
  *
- * MediaCore's tinymce plugin
+ * Binumi's tinymce plugin
  *
  * @package    local
  * @subpackage tinymce_mediacore
@@ -44,7 +45,7 @@ require_once 'mediacore_client.class.php';
  * Moodle 2.4+
  *
  * Moodle 2.3 uses a different method to configure the plugin. See
- * MediaCore plugin installation documentation for details.
+ * Binumi plugin installation documentation for details.
  *
  * @package tinymce_mediacore
  * @copyright 2012 MediaCore Technologies Inc
