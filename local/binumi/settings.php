@@ -60,7 +60,7 @@ if ($hassiteconfig) {
             LOCAL_BINUMI_PLUGIN_NAME . '/scheme',
             get_string('setting_scheme_label', LOCAL_BINUMI_PLUGIN_NAME),
             get_string('setting_scheme_desc', LOCAL_BINUMI_PLUGIN_NAME),
-            LOCAL_MEDIACORE_DEFAULT_SCHEME, 'https', 'http'
+            LOCAL_BINUMI_DEFAULT_SCHEME, 'https', 'http'
         );
     $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
     $settings->add($setting);
@@ -87,7 +87,7 @@ if ($hassiteconfig) {
 
     //shared_secret
     $setting = new admin_setting_configtext(
-            LOCAL_MEDIACORE_PLUGIN_NAME . '/shared_secret',
+            LOCAL_BINUMI_PLUGIN_NAME . '/shared_secret',
             get_string('setting_shared_secret_label', LOCAL_BINUMI_PLUGIN_NAME),
             get_string('setting_shared_secret_desc', LOCAL_BINUMI_PLUGIN_NAME),
             '', PARAM_TEXT
@@ -97,7 +97,7 @@ if ($hassiteconfig) {
 
     //trusted embeds
     $setting = new admin_setting_configcheckbox(
-            LOCAL_MEDIACORE_PLUGIN_NAME . '/use_trusted_embeds',
+            LOCAL_BINUMI_PLUGIN_NAME . '/use_trusted_embeds',
             get_string('setting_use_trusted_embeds_label', LOCAL_BINUMI_PLUGIN_NAME),
             get_string('setting_use_trusted_embeds_desc', LOCAL_BINUMI_PLUGIN_NAME),
             LOCAL_BINUMI_DEFAULT_USE_TRUSTED_EMBEDS, true, false
