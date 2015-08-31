@@ -22,16 +22,22 @@
  *  |______  /__|___|  /____/|__|_|  /__|
  *         \/        \/            \/
  *
- * Binumi tinymce language strings
- *
  * @package    tinymce
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
 
-$string['pluginname'] = 'MediaCore Chooser';
-$string['nopreview'] = 'Cannot preview media.';
-$string['mediacore:loaderror'] = 'Sorry, an error occured while loading the MediaCore Chooser plugin';
-$string['mediacore:desc'] = 'MediaCore Chooser';
+defined('MOODLE_INTERNAL') || die('Invalid access');
+
+$plugin                     = new StdClass();
+$plugin->component          = 'tinymce_binumi';
+$plugin->version            = 2015090100;
+$plugin->requires           = 2012062500;
+$plugin->release            = '1.0.0';
+$plugin->maturity           = MATURITY_STABLE;
+$plugin->dependencies       = array(
+    'local_binumi'  => 2015090100,
+    'filter_binumi' => 2015090100,
+);

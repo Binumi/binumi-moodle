@@ -24,9 +24,9 @@
  *
  * Binumi's tinymce plugin
  *
- * @package    local
- * @subpackage tinymce_mediacore
- * @copyright  2012 MediaCore Technologies
+ * @package    tinymce
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -34,46 +34,44 @@
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
 global $CFG;
-require_once $CFG->dirroot . '/local/mediacore/lib.php';
-require_once 'mediacore_client.class.php';
+require_once $CFG->dirroot . '/local/binumi/lib.php';
+require_once 'binumi_client.class.php';
 
 
 /**
- * Plugin for MediaCore media
+ * Plugin for Binumi media
  *
- * This module is used to configure the MediaCore button in TinyMCE for
+ * This module is used to configure the Binumi button in TinyMCE for
  * Moodle 2.4+
  *
  * Moodle 2.3 uses a different method to configure the plugin. See
  * Binumi plugin installation documentation for details.
  *
- * @package tinymce_mediacore
- * @copyright 2012 MediaCore Technologies Inc
+ * @package tinymce_binumi
+ * @copyright 2011 - 2015 Binumi Agency Hong Kong Limited
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class tinymce_mediacore extends editor_tinymce_plugin
+class tinymce_binumi extends editor_tinymce_plugin
 {
     /** @var array list of buttons defined by this plugin */
-    protected $buttons = array('mediacore');
+    protected $buttons = array('binumi');
 
     protected function update_init_params(array &$params, context $context,
         array $options = null) {
 
-        // 'mediacore' is the key used in Moodle >= 2.5
-        // 'filter/mediacore' is the key used in Moodle < 2.5
+        // 'binumi' is the key used in Moodle >= 2.5
         $filters = filter_get_active_in_context($context);
-        $enabled  = array_key_exists('mediacore', $filters)
-                 || array_key_exists('filter/mediacore', $filters);
+        $enabled  = array_key_exists('binumi', $filters);
 
-        // If mediacore filter is disabled, do not add button.
+        // If binumi filter is disabled, do not add button.
         if (!$enabled) {
             return;
         }
 
-        $mcore_client = new mediacore_client();
-        $params = $params + $mcore_client->get_texteditor_params();
+        $binumi_client = new binumi_client();
+        $params = $params + $binumi_client->get_texteditor_params();
         $numrows = $this->count_button_rows($params);
-        $this->add_button_after($params, $numrows, '|,mediacore');
+        $this->add_button_after($params, $numrows, '|,binumi');
 
         // Add JS file, which uses default name.
         $this->add_js_plugin($params);
