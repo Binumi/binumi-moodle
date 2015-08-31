@@ -24,9 +24,9 @@
  *
  * Binumi filter
  *
- * @package    filter_mediacore
- * @subpackage filter
- * @copyright  2012 MediaCore Technologies
+ * @package    filter
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */
@@ -34,11 +34,11 @@
 defined('MOODLE_INTERNAL') || die('Invalid access');
 
 $plugin                     = new StdClass();
-$plugin->component          = 'filter_mediacore';
-$plugin->version            = 2015082500;
+$plugin->component          = 'filter_binumi';
+$plugin->version            = 2015090100;
 $plugin->requires           = 2012062500;
-$plugin->release            = '3.2.4';
+$plugin->release            = '1.0.0';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
-    'local_mediacore' => 2015022100,
+    'local_binumi' => 2015090100,
 );

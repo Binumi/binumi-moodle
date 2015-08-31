@@ -25,12 +25,12 @@
  * Binumi's filter language strings
  *
  * @package    filter
- * @subpackage mediacore
- * @copyright  2012 MediaCore Technologies
+ * @subpackage binumi
+ * @copyright  2011 - 2015 Binumi Agency Hong Kong Limited
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['filtername'] = 'MediaCore media filter';
+$string['filtername'] = 'Binumi media filter';
 
 // Errors.
 $string['filter_error_no_type_id']
