@@ -78,14 +78,10 @@ To hook your Binumi site into Moodle you must navigate to: `Site
 administration -> Plugins -> Local plugins -> Binumi package config` and enter:
 
 * The `hostname` of Binumi site (i.e. binumi.com).
-* The `scheme` you wish to launch the Chooser and view embeds from (i.e. HTTP or HTTPS)
-* Whether you want to use `lti authentication` (i.e. True or False)
 * The name of your `lti consumer key` (this must match a valid LTI consumer in
   Binumi site)
 * The secret of your `lti shared secret` (this also must match the secret in the
   LTI consumer above)
-* Whether you want to use `trusted embeds` (i.e. True or False). This allows users to 
-  share content from private course collections with other users.
 
 ### Filter configuration setup: ###
 
