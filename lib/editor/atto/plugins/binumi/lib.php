@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The MediaCore Chooser Atto editor button implementation
+ * The Binumi Chooser Atto editor button implementation
  *
  * @package    atto
  * @subpackage binumi

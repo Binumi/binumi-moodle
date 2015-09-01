@@ -7,11 +7,10 @@ Session.vim
 .netrwhist
 *~
 
-### MediaCore Moodle ###
+### Binumi Moodle ###
 /bin/*
-/lib/editor/tinymce/plugins/mediacore/editor_plugin_src.js
-/filter/mediacore/README.md
-/lib/editor/tinymce/plugins/mediacore/README.md
-/local/mediacore/README.md
-/repository/mediacore/README.md
+/lib/editor/tinymce/plugins/binumi/editor_plugin_src.js
+/filter/binumi/README.md
+/lib/editor/tinymce/plugins/binumi/README.md
+/local/binumi/README.md
 /.idea/

@@ -408,11 +408,11 @@ class binumi_client
 
 		if (empty($courseid)) {
 			throw new Zend_Exception(get_string('no_course_id',
-				LOCAL_MEDIACORE_PLUGIN_NAME), E_USER_ERROR);
+				LOCAL_BINUMI_PLUGIN_NAME), E_USER_ERROR);
 		}
 		if (!$this->_config->has_lti_config()) {
 			throw new Zend_Exception(get_string('no_lti_config',
-				LOCAL_MEDIACORE_PLUGIN_NAME), E_USER_ERROR);
+				LOCAL_BINUMI_PLUGIN_NAME), E_USER_ERROR);
 		}
 		$course = $DB->get_record('course', array('id' => (int)$courseid), '*',
 			MUST_EXIST);
@@ -448,7 +448,7 @@ class binumi_client
 	 * Method for hooking into the Moodle 2.3 Tinymce plugin lib.php
 	 * file
 	 *
-	 * Moodle 2.4+ uses different logic -- see MediaCore plugin
+	 * Moodle 2.4+ uses different logic -- see Binumi plugin
 	 * installation instructions for details.
 	 *
 	 * @param array $filters

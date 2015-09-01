@@ -35,8 +35,8 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
 
 
 /**
- * A class that encapsulated the MediaCore Moodle Config
- * Config values in config_plugins table as local_mediacore
+ * A class that encapsulated the Binumi Moodle Config
+ * Config values in config_plugins table as local_binumi
  */
 class binumi_config
 {
@@ -91,8 +91,7 @@ class binumi_config
     public function has_lti_config() {
         return (!empty($this->_host) &&
                 !empty($this->_consumer_key) &&
-                !empty($this->_shared_secret) &&
-                !empty($this->_use_lti_auth));
+                !empty($this->_shared_secret));
     }
 
     /**

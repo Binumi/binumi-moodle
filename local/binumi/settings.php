@@ -55,26 +55,6 @@ if ($hassiteconfig) {
     $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
     $settings->add($setting);
 
-    //scheme
-    $setting = new admin_setting_configcheckbox(
-            LOCAL_BINUMI_PLUGIN_NAME . '/scheme',
-            get_string('setting_scheme_label', LOCAL_BINUMI_PLUGIN_NAME),
-            get_string('setting_scheme_desc', LOCAL_BINUMI_PLUGIN_NAME),
-            LOCAL_BINUMI_DEFAULT_SCHEME, 'https', 'http'
-        );
-    $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
-    $settings->add($setting);
-
-    //use auth?
-    $setting = new admin_setting_configcheckbox(
-            LOCAL_BINUMI_PLUGIN_NAME . '/use_lti_auth',
-            get_string('setting_use_lti_auth_label', LOCAL_BINUMI_PLUGIN_NAME),
-            get_string('setting_use_lti_auth_desc', LOCAL_BINUMI_PLUGIN_NAME),
-            LOCAL_BINUMI_DEFAULT_USE_LTI_AUTH, true, false
-        );
-    $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
-    $settings->add($setting);
-
     //consumer_key
     $setting = new admin_setting_configtext(
             LOCAL_BINUMI_PLUGIN_NAME . '/consumer_key',
@@ -91,16 +71,6 @@ if ($hassiteconfig) {
             get_string('setting_shared_secret_label', LOCAL_BINUMI_PLUGIN_NAME),
             get_string('setting_shared_secret_desc', LOCAL_BINUMI_PLUGIN_NAME),
             '', PARAM_TEXT
-        );
-    $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
-    $settings->add($setting);
-
-    //trusted embeds
-    $setting = new admin_setting_configcheckbox(
-            LOCAL_BINUMI_PLUGIN_NAME . '/use_trusted_embeds',
-            get_string('setting_use_trusted_embeds_label', LOCAL_BINUMI_PLUGIN_NAME),
-            get_string('setting_use_trusted_embeds_desc', LOCAL_BINUMI_PLUGIN_NAME),
-            LOCAL_BINUMI_DEFAULT_USE_TRUSTED_EMBEDS, true, false
         );
     $setting->plugin = LOCAL_BINUMI_PLUGIN_NAME;
     $settings->add($setting);
