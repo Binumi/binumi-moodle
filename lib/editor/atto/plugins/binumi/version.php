@@ -31,9 +31,9 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin                     = new StdClass();
 $plugin->component          = 'atto_binumi';
-$plugin->version            = 2015090100;
+$plugin->version            = 2015090800;
 $plugin->requires           = 2014041100; //Moodle 2.7
-$plugin->release            = '1.0.0';
+$plugin->release            = '1.0.1';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
     'local_binumi' => 2015090100,

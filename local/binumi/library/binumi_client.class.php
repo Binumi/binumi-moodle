@@ -327,6 +327,22 @@ class binumi_client
 	}
 
 	/**
+	 * Sign and return the LTI-signed url endpoint
+	 * NOTE When using trusted embeds with LTI, we
+	 *      send a custom_use_trusted_embed param,
+	 *      added in `get_lti_params` method
+	 *
+	 * @param string $url
+	 * @param string|int $courseId
+	 * @param array $lti_params
+	 * @return string
+	 */
+	public function get_signed_url($url, $courseId, $lti_params) {
+		return $url . '?' . $this->get_query(
+			$this->get_signed_lti_params($url, 'GET', $courseId, $lti_params)
+		);
+	}
+	/**
 	 * Get the moodle webroot
 	 *
 	 * @return string
@@ -349,13 +365,9 @@ class binumi_client
 		$user_full = trim($user_given . ' ' . $user_family);
 		$user_email = (isset($USER->email)) ? $USER->email: '';
 
-		if (strpos($CFG->release, '2.8') === false) {
-			$roles = lti_get_ims_role($USER, 0, $course->id);
-		} else {
-			// NOTE: Moodle 2.8 adds support for specifying whether this is
-			//       an LTI 2.0 launch.
-			$roles = lti_get_ims_role($USER, 0, $course->id, false);
-		}
+
+		$roles = lti_get_ims_role($USER, 0, $course->id, false);
+
 
 		$params = array(
 			'context_id' => $course->id,

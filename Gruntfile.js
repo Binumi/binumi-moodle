@@ -61,6 +61,20 @@ module.exports = function(grunt) {
                     }
                 ]
             },
+            blocks: {
+                options: {
+                    mode: 'zip',
+                    archive: 'release/<%= pkg.version %>/blocks_binumi.zip'
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'blocks/binumi/',
+                        src: ['*'],
+                        dest: 'binumi',
+                    }
+                ]
+            },
         },
     });
 

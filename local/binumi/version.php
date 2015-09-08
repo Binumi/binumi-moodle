@@ -35,9 +35,9 @@ defined('MOODLE_INTERNAL') || die('Invalid access');
 
 $plugin                     = new stdClass();
 $plugin->component          = 'local_binumi';
-$plugin->version            = 2015090100;
+$plugin->version            = 2015090800;
 $plugin->requires           = 2012062500;
-$plugin->release            = '1.0.0';
+$plugin->release            = '1.0.1';
 $plugin->maturity           = MATURITY_STABLE;
 $plugin->dependencies       = array(
     'mod_lti' => 2011112900,

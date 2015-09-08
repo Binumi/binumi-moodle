@@ -57,7 +57,6 @@ function atto_binumi_params_for_js() {
     $params = $client->get_texteditor_params();
 
     return array(
-        'chooser_js_url' => $params['binumi_chooser_js_url'],
         'url' => $params['binumi_chooser_url'],
         'mode' => 'popup',
     );
