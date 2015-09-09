@@ -14,7 +14,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'local/binumi/',
-                        src: ['*'],
+                        src: ['**'],
                         dest: 'binumi',
                     }
                 ]
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'filter/binumi/',
-                        src: ['*'],
+                        src: ['**'],
                         dest: 'binumi',
                     }
                 ]
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'lib/editor/atto/plugins/binumi/',
-                        src: ['*'],
+                        src: ['**'],
                         dest: 'binumi',
                     }
                 ]
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'lib/editor/tinymce/plugins/binumi/',
-                        src: ['*'],
+                        src: ['**'],
                         dest: 'binumi',
                     }
                 ]
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'blocks/binumi/',
-                        src: ['*'],
+                        src: ['**'],
                         dest: 'binumi',
                     }
                 ]
