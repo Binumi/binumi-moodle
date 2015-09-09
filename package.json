@@ -1,7 +1,7 @@
 {
   "name": "binumi-moodle",
   "description": "Binumi Moodle Plugins",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "private": true,
   "readme": "README.md",
   "repository": {
