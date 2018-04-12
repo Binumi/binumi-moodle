@@ -12,7 +12,7 @@
 A set of [Moodle](http://moodle.org) plugins that integrate with
 [Binumi](http://binumi.com).
 
-Designed to work with Moodle 2.4+. Tested and compatible up to Moodle v2.8.
+Designed to work with Moodle 2.4+. Tested and compatible up to Moodle v3.4.2.
 
 ## Overview ##
 These plugins provide a rich set of Moodle-Binumi integrations using LMS-LTI
@@ -43,6 +43,18 @@ integration with Binumi, allowing you to launch the "Binumi Chooser" from
 a custom button added to every Atto editor.
 
 ## Plugin Installation/Upgrade ##
+
+### Installation ###
+
+For the first installation, please navigate to: `Site administration -> Plugins -> Install plugins`
+and install those zip files in folder `release/latest-version` by sequence:
+
+* local_binumi.zip
+* filter_binumi.zip
+* atto_binumi.zip
+* blocks_binumi.zip
+
+### Upgrade ###
 
 Upgrading the Binumi plugin is done by copying the following folders into
 the correct Moodle directories.
